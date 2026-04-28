@@ -7,3 +7,4 @@ Date : 31-Mar-2026
 
 Date : 28-Apr-2026
 1. Created separate folder and added README file
+2. Changed global config user.email.
