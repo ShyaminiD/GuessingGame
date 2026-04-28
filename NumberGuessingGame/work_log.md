@@ -4,3 +4,6 @@ Date: 23-Mar-2026
 Date : 31-Mar-2026
 1. Added error handling using try except for handling invalid inputs.
 2. Removed some extra("/"") characters in user input using strip, and added error messages.
+
+Date : 28-Apr-2026
+1. Created separate folder and added README file
