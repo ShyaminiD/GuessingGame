@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Weather-App-Flask</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -54,7 +54,8 @@
                 class="form-control"
                 id="exampleInputCity"
                 aria-describedby="cityHelp"
-                value={{place}}
+                name="place"
+                value="{{place if place else " "}}"
               />
               <div id="cityHelp" class="form-text">Input Name of the City</div>
             </div>
@@ -64,6 +65,31 @@
         </div>
       </div>
     </div>
+
+    {%if weatherData %}
+    <div class="container-fluid mt-5">
+    <div class="row justify-content-center mt-3">
+    <div class="card mb-3 " style="max-width: 540px;">
+  <div class="row g-0 ">
+
+     
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title">{{weatherData.name}}</h2>
+        <p class="display-3 fw-semibold">{{weatherData.main.temp}}°C </p>
+         <p class="display-6 fw-medium">{{weatherData.weather[0].description}} </p>
+        <p class="card-text"  class="display-7 fw-medium">Feels like {{weatherData.main.feels_like}}°C</p>
+      </div>
+    </div>
+   
+  </div>
+  </div>
+</div>
+
+</div>
+
+
+{% endif %}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
