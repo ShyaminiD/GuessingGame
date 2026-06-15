@@ -1,99 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Weather-App-Flask</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">All About Weather</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Api Details</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid mt-5">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-          <form method="GET">
-            <div class="mb-3">
-              <label for="exampleInputCity" class="form-label"
-                >City/Place</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputCity"
-                aria-describedby="cityHelp"
-                name="place"
-                value="{{place if place else " "}}"
-              />
-              <div id="cityHelp" class="form-text">Input Name of the City</div>
-            </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather-App-Flask</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg  bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">AllWeather</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item text-white">
+            <a class="nav-link active " aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ApiDetails</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">10Days</a>
+          </li>
+          <span class="navbar-text">
+            {{weatherData.name}} {{weatherData.main.temp}} °C {{weatherData.weather[0].description}}
+          </span>
+        </ul>
+
+        <form method="GET" class="d-flex" role="search">
+          <input class="form-control me-2" type="search" id="exampleInputCity" placeholder="Search" aria-label="Search"
+            name="place" value="{{place if place else " "}}" />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
+  </nav>
 
-    {%if weatherData %}
-    <div class="container-fluid mt-5">
+
+
+
+  <!-- {%if weatherData %} -->
+  <div class="container-fluid mt-5">
     <div class="row justify-content-center mt-3">
-    <div class="card mb-3 " style="max-width: 540px;">
-  <div class="row g-0 ">
+      <div class="card mb-3 " style="max-width: 540px;">
+        <div class="row g-0 ">
 
-     
-    <div class="col-md-8">
-      <div class="card-body">
-        <h2 class="card-title">{{weatherData.name}}</h2>
-        <p class="display-3 fw-semibold">{{weatherData.main.temp}}°C </p>
-         <p class="display-6 fw-medium">{{weatherData.weather[0].description}} </p>
-        <p class="card-text"  class="display-7 fw-medium">Feels like {{weatherData.main.feels_like}}°C</p>
+
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2 class="card-title">{{weatherData.name}}</h2>
+              <p class="display-3 fw-semibold">{{weatherData.main.temp}}°C </p>
+              <p class="display-6 fw-medium">{{weatherData.weather[0].description}} </p>
+              <p class="card-text" class="display-7 fw-medium">Feels like {{weatherData.main.feels_like}}°C</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
-   
+
   </div>
-  </div>
+  
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center mt-3">
+
+        <div class="col-md-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between"><span>Min-Temperature </span><span>{{weatherData.main.temp_min}}°C</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Max-Temperature </span><span>{{weatherData.main.temp_max}}°C</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Pressure </span> <span>{{weatherData.main.pressure}}hPa</span> </li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Humidity </span> <span>{{weatherData.main.humidity}}%</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Sea Level </span> <span>{{weatherData.main.sea_level}}hPa</span></li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Ground Level</span>  <span>{{weatherData.main.grnd_level}}hPa</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between"><span>Visibility </span><span>{{weatherData.visibility}}m </span>  </li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Wind Speed </span><span>{{weatherData.wind.speed}}meter/sec </span> </li>
+                    <li class="list-group-item d-flex justify-content-between"><span>Wind Gust </span><span>{{weatherData.wind.gust}}meter/sec </span> </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-</div>
+  <!-- {% endif %} -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
 
-
-{% endif %}
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-  </body>
 </html>
