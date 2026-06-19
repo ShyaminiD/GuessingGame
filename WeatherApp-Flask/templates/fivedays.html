@@ -1,0 +1,54 @@
+{%extends "index.html" %} {%block content%}
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="card" style="width: 40rem">
+    <div class="card-body">
+      <h5 class="card-title">5 day weather forecast</h5>
+      <p class="card-text">
+        5 day forecast is available at any location on the globe. It includes
+        weather forecast data with 3-hour step.
+      </p>
+    </div>
+  </div>
+  <div class="card" style="width: 40rem">
+    <div class="card-body d-flex justify-content-between">
+      <ul class="list-group list-group-flush w-50 me-2">
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Min-Temperature </span
+          ><span>{{weatherData.main.temp_min}}°C</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Max-Temperature </span
+          ><span>{{weatherData.main.temp_max}}°C</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Pressure </span> <span>{{weatherData.main.pressure}}hPa</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Humidity </span> <span>{{weatherData.main.humidity}}%</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Sea Level </span> <span>{{weatherData.main.sea_level}}hPa</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Ground Level</span>
+          <span>{{weatherData.main.grnd_level}}hPa</span>
+        </li>
+      </ul>
+
+      <ul class="list-group list-group-flush w-50 ms-2">
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Visibility </span><span>{{weatherData.visibility}}m </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Wind Speed </span
+          ><span>{{weatherData.wind.speed}}meter/sec </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Wind Gust </span
+          ><span>{{weatherData.wind.gust}}meter/sec </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock%}

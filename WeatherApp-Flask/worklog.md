@@ -7,6 +7,10 @@ Date: 24-May-2026
 Date: 27-May-2026
 3. Integrated OpenWeather API.
 
-Date : 15-May-2026
+Date : 15-Jun-2026
 4. Able to fetch data and display in ui, default location set to location fecthed from IP address.
 5. Added ui using getbootstrap.
+
+Date :19-Jun-2026
+6. Added Template inheritance and created separate routes for nav bar links.
+7. shared api data to all routes using context processor
