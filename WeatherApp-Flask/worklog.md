@@ -14,3 +14,7 @@ Date : 15-Jun-2026
 Date :19-Jun-2026
 6. Added Template inheritance and created separate routes for nav bar links.
 7. shared api data to all routes using context processor
+
+Date :27-Jul-2026
+8. Added five days weather data in accordian
+9. Added card and alignment in home page

@@ -34,20 +34,25 @@ def getWeather():
                 url = f"https://api.openweathermap.org/data/2.5/weather?q={place}&appid={api_key}&units=metric"
                 response = requests.get(url)
                 weatherData = response.json()
-                print("xxxxxxxxxxxxxx",weatherData)
+                # print("xxxxxxxxxxxxxx",weatherData)
                 urlfivedays = f"https://api.openweathermap.org/data/2.5/forecast?q={place}&appid={api_key}&units=metric"
                 responseFiveDays = requests.get(urlfivedays)
                 fiveDaysData = responseFiveDays.json()
+                print("FIVE DAYS DATA : ", fiveDaysData)
               
-                print("5 days", fiveDaysData)
-                print("hello world")
+                fiveDaysForecast = fiveDaysData["list"]
+                for i in fiveDaysForecast:
+                    print("i",i)
+                
               
             if weatherData:
                 display_place = " "
     except Exception as e:
         print("Place not found", e)
     return {
-    "weatherData": weatherData
+    "weatherData": weatherData,
+    "fiveDaysData":fiveDaysData,
+    "fiveDaysForecast":fiveDaysForecast
 }
 
 @app.route("/", methods=["GET", "POST"])
